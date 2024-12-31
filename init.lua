@@ -585,6 +585,7 @@ require('which-key').register({
 -- before setting up the servers.
 require('mason').setup()
 require('mason-lspconfig').setup()
+vim.g.python3_host_prog = '/home/jeryl/venv/bin/python'
 
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -597,7 +598,7 @@ require('mason-lspconfig').setup()
 local servers = {
   -- clangd = {},
   -- gopls = {},
-  pyright = {},
+  pyright = { filetypes = { 'python' } },
   sqlls = {},
   -- rust_analyzer = {},
   -- tsserver = {},
@@ -625,6 +626,7 @@ local mason_lspconfig = require 'mason-lspconfig'
 
 mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
+  automatic_installation = true
 }
 
 mason_lspconfig.setup_handlers {
