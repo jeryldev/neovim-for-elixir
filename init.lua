@@ -453,8 +453,10 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash', 'elixir', 'eex' },
-
+    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'sql', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash', 'elixir', 'eex', 'heex', 'markdown', 'markdown_inline', 'dockerfile', 'terraform' },
+    sync_install = false,
+    ignore_install = {},
+    modules = {},
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = true,
 
@@ -595,7 +597,8 @@ require('mason-lspconfig').setup()
 local servers = {
   -- clangd = {},
   -- gopls = {},
-  -- pyright = {},
+  pyright = {},
+  sqlls = {},
   -- rust_analyzer = {},
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
