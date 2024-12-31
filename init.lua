@@ -354,7 +354,8 @@ vim.keymap.set('n', 'gJ', '<cmd>join<cr>', { silent = true })
 vim.keymap.set('n', '<c-x><c-k>', '<cmd>bd<cr>', { silent = true })
 
 -- I prefer cursor in the center
-vim.o.scrolloff = 999
+-- vim.o.scrolloff = 999
+vim.o.scrolloff = 5
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
