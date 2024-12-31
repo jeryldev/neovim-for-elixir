@@ -583,9 +583,23 @@ require('which-key').register({
 
 -- mason-lspconfig requires that these setup functions are called in this order
 -- before setting up the servers.
-require('mason').setup()
+local py3nvim_path = vim.fn.expand('~/.pyenv/versions/py3nvim/bin/python')
+vim.g.python3_host_prog = py3nvim_path
+
+require('mason').setup({
+  PATH = "prepend",
+  python = {
+    executable = py3nvim_path
+  },
+  ensure_installed = {
+    'pyright',
+    'black',
+    'mypy',
+    'ruff',
+    'sqls',
+  }
+})
 require('mason-lspconfig').setup()
-vim.g.python3_host_prog = '/home/jeryl/venv/bin/python'
 
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -599,6 +613,7 @@ local servers = {
   -- clangd = {},
   -- gopls = {},
   pyright = { filetypes = { 'python' } },
+  ruff = { filetypes = { 'python' } },
   sqlls = {},
   -- rust_analyzer = {},
   -- tsserver = {},
