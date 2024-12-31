@@ -687,7 +687,7 @@ cmp.setup {
   },
 }
 
--- Override file
+-- Overrides file
 require('overrides')
 
 -- The line beneath this is called `modeline`. See `:help modeline`
